@@ -3,6 +3,7 @@ import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
 import Credit from './components/Credit';
 import './App.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 class App extends React.Component {
   constructor(props) {

@@ -1,4 +1,6 @@
 import React from 'react';
+import BuildingInfo from './BuildingInfo';
+import './ViewBuilding.css';
 
 class ViewBuilding extends React.Component {
 
@@ -10,10 +12,11 @@ class ViewBuilding extends React.Component {
 
 		return (
 			<div>
-				<p>
-					{ building.map(b => <div>{b.address}</div>) }
-					<i>Click on a name to view more information</i>
-				</p>
+				{ building.length > 0 ?
+					building.map((b, i) => <BuildingInfo key={i} buildingInfo={b}/>)
+					:
+					<div><i>Click on a building to see more information</i></div>
+				}
 			</div>
 		);
 	}

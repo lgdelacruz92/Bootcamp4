@@ -3,6 +3,8 @@ import Expandable from '../widgets/Expandable';
 import AddBuildingForm from './AddBuildingForm';
 import Search from './Search';
 import './BuildingList.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 class BuilingList extends React.Component {
 	constructor(props) {
@@ -47,7 +49,13 @@ class BuilingList extends React.Component {
 				<tr onClick={() => this.buildingClick(directory)} key={directory.id}>
 					<td className="uppercase">{directory.code} </td>
 					<td> {directory.name} </td>
-					<td><button className="light-primary" onClick={() => this.handleRemove(directory)}>Remove</button></td>
+					<td>
+						<div 
+							className="button-contained" 
+							onClick={() => this.handleRemove(directory)}>
+								<FontAwesomeIcon icon={faTrashAlt}/>
+						</div>
+					</td>
 				</tr>
 			);
 		});

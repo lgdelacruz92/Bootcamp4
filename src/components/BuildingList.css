@@ -1,3 +1,7 @@
+table {
+  width: 100%;
+}
+
 td:hover {
   background: none;
 }
@@ -23,4 +27,13 @@ button:hover {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.button-contained {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
