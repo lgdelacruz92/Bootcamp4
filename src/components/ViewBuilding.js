@@ -7,7 +7,6 @@ class ViewBuilding extends React.Component {
 		const { data } = this.props;
 		const { selectedBuilding } = this.props.appState;
 		const building = data.filter(directory => directory.id === selectedBuilding);
-		console.log(building);
 
 		return (
 			<div>

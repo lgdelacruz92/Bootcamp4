@@ -8,6 +8,7 @@ class BuilingList extends React.Component {
 		this.buildingClick = this.buildingClick.bind(this);
 		this.handleAddBuildingClick = this.handleAddBuildingClick.bind(this);
 		this.onHide = this.onHide.bind(this);
+		this.handleRemove = this.handleRemove.bind(this);
 
 		this.state = {
 			addSomething: false
@@ -27,8 +28,14 @@ class BuilingList extends React.Component {
 		this.props.onBuildingClick(directory.id);
 	}
 
+	handleRemove(directory) {
+		const index = this.props.data.indexOf(directory);
+		if (index > -1) {
+			this.props.data.splice(index, 1);
+		}
+	}
+
 	render() {
-		//console.log('This is my directory file', this.props.data);
 		let { data } = this.props;
 		const { filterText } = this.props.appState;
 		data = data.filter(data => data.name.indexOf(filterText) >= 0);
@@ -38,6 +45,7 @@ class BuilingList extends React.Component {
 				<tr onClick={() => this.buildingClick(directory)} key={directory.id}>
 					<td>{directory.code} </td>
 					<td> {directory.name} </td>
+					<td><button onClick={() => this.handleRemove(directory)}>Remove</button></td>
 				</tr>
 			);
 		});
