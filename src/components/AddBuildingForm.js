@@ -3,11 +3,20 @@ import './AddBuildingForm.css';
 
 const TextField = props=> {
   const { title, placeholder, onChange, defaultValue } = props;
+  const myInputRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (defaultValue.length === 0) {
+      myInputRef.current.value = '';
+    }
+    return () => {}
+  });
 
   return  (
     <div className="textfield">
       <label>{title}</label>
       <input
+        ref={myInputRef}
         defaultValue={defaultValue}
         onChange={onChange} 
         placeholder={placeholder}/>
@@ -63,7 +72,7 @@ const AddBuildingForm = props => {
           defaultValue={state.address}
         />
 
-      <button onClick={handleAdd}>Add</button>
+      <button className="dark-primary" onClick={handleAdd}>Add</button>
     </div>);
   
 };

@@ -1,0 +1,26 @@
+td:hover {
+  background: none;
+}
+
+button {
+  text-transform: uppercase;
+  background: #607D8B;
+  color: white;
+}
+
+button:hover {
+  color: black;
+}
+
+.light-primary {
+  background: #CFD8DC;
+  color: black;
+}
+
+.dark-primary {
+  background: #455A64;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

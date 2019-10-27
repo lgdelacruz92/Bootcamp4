@@ -1,6 +1,8 @@
 import React from 'react';
 import Expandable from '../widgets/Expandable';
 import AddBuildingForm from './AddBuildingForm';
+import Search from './Search';
+import './BuildingList.css';
 
 class BuilingList extends React.Component {
 	constructor(props) {
@@ -38,32 +40,46 @@ class BuilingList extends React.Component {
 	render() {
 		let { data } = this.props;
 		const { filterText } = this.props.appState;
-		data = data.filter(data => data.name.indexOf(filterText) >= 0);
+		data = data.filter(data => data.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
 
 		const buildingList = data.map(directory => {
 			return (
 				<tr onClick={() => this.buildingClick(directory)} key={directory.id}>
-					<td>{directory.code} </td>
+					<td className="uppercase">{directory.code} </td>
 					<td> {directory.name} </td>
-					<td><button onClick={() => this.handleRemove(directory)}>Remove</button></td>
+					<td><button className="light-primary" onClick={() => this.handleRemove(directory)}>Remove</button></td>
 				</tr>
 			);
 		});
 
 		return <div>
-			<div ref={this.addRef}>
-				<button 
-					onClick={this.handleAddBuildingClick} 
-					className="btn btn-primary">Add a building</button>
-				<Expandable
-					btnRef={this.addRef}
-					onHide={this.onHide}
-					expanded={this.state.addSomething}>
-					<AddBuildingForm data={this.props.data} onHide={this.onHide}/>
-				</Expandable>
-			</div>
+			<table className="table table-striped table-hover">
+				<tbody>
+					<tr>
+						<td colSpan="3">
+							<b className="title">Code Building</b>
+							<div ref={this.addRef}>
+								<button 
+									onClick={this.handleAddBuildingClick} 
+									className="btn btn-primary">Add a building</button>
+								<Expandable
+									btnRef={this.addRef}
+									onHide={this.onHide}
+									expanded={this.state.addSomething}>
+									<AddBuildingForm data={this.props.data} onHide={this.onHide}/>
+								</Expandable>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colSpan="3">
+							<Search update={this.props.searchUpdate}/>
+						</td>
+					</tr>
+					{buildingList}
+				</tbody>
+			</table>
 
-			{buildingList}
 		</div>;
 	}
 }

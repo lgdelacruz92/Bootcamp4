@@ -1,8 +1,8 @@
 import React from 'react';
-import Search from './components/Search';
 import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
 import Credit from './components/Credit';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -32,24 +32,17 @@ class App extends React.Component {
         <div className="row">
           <h1>UF Directory App</h1>
         </div>
-
-        <Search update={this.filterUpdate}/>
         <main>
           <div className="row">
             <div className="column1">
               <div className="tableWrapper">
-                <table className="table table-striped table-hover">
-                  <tr>
-                    <td>
-                      <b>Code Building</b>
-                    </td>
-                  </tr>
+
                   <BuildingList
+                    searchUpdate={this.filterUpdate}
                     onBuildingClick={this.selectedUpdate}
                     appState={this.state}
                     data={this.props.data}
                   />
-                </table>
               </div>
             </div>
             <div className="column2">

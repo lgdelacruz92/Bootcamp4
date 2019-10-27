@@ -1,0 +1,9 @@
+.title {
+  font-size: 1.3rem;
+}
+
+.tableWrapper {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+}
