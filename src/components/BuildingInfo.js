@@ -65,8 +65,6 @@ const BuildingInfo = props => {
                 </Marker>
             </ReactMapGL>
           </div>
-
-
         </div>
 
     }
